@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.InMemory;
 using ENOMVG_SOF_2023242.Models;
 
-namespace ENOMVG_SOF_2023242.Repository
+namespace ENOMVG_SOF_2023242.Data
 {
     public class SchollingDbContext : DbContext
     {
@@ -13,7 +13,7 @@ namespace ENOMVG_SOF_2023242.Repository
 
         public SchollingDbContext()
         {
-            this.Database.EnsureCreated();
+            Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)

@@ -1,24 +1,43 @@
-﻿using ENOMVG_SOF_2023242.Models;
+﻿using ENOMVG_SOF_2023242.Data;
+using ENOMVG_SOF_2023242.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ENOMVG_SOF_2023242.Repository
 {
-    public class TeacherRepository : Repository<Teacher>, IRepository<Teacher>
+    public class TeacherRepository : ITeacherRepository
     {
-        public TeacherRepository(SchollingDbContext _ctx) : base(_ctx)
+        protected SchollingDbContext context;
+        public TeacherRepository(SchollingDbContext _context)
         {
-
+            this.context = _context;
         }
-        public override Teacher Read(int _id)
+        public void Create(Teacher _item)
+        {
+            context.Set<Teacher>().Add(_item);
+            context.SaveChanges();
+        }
+
+        public void Delete(int _id)
+        {
+            context.Set<Teacher>().Remove(Read(_id));
+            context.SaveChanges();
+        }
+
+        public IQueryable<Teacher> ReadAll()
+        {
+            return context.Set<Teacher>();
+        }
+        public Teacher Read(int _id)
         {
             return this.context.Teachers.First(x => x.Id == _id);
         }
 
-        public override void Update(Teacher _item)
+        public void Update(Teacher _item)
         {
             var old = Read(_item.Id);
             foreach (var property in old.GetType().GetProperties())
