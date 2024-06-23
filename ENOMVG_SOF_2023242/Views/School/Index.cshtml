@@ -2,27 +2,34 @@
 @model IEnumerable<School>
 
 <!DOCTYPE <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta charset="utf-8" />
-        <title></title>
-    </head>
-    <body>
-        <h1>Iskola áttekintő rendszer</h1>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>Iskola áttekintő rendszer</h1>
         
-        <table>
-            <tr>
-                <th>Név</th>
-                <th>Kor</th>
-                <th>Típus</th>
-            </tr>
-            @foreach(var item in Model)
-            {
-                @:<tr>
-                    @:<td>@item.Name</td>
-                    @:<td>@item.Age</td>
-                    @:<td>@item.Type</td>
-                @:</tr>
-            }
-            </table>
+    <table>
+        <tr>
+            <th>Név</th>
+            <th>Kor</th>
+            <th>Típus</th>
+            <th>Műveletek</th>
+        </tr>
+        @foreach(var item in Model)
+        {
+            @:<tr>
+                @:<td>@item.Id @item.Name</td>
+                @:<td>@item.Age</td>
+                @:<td>@item.Type</td>
+                @:<td>
+                @:    <a href="/school/delete?id=@item.Id">Delete</a>
+                @:    <a href="/school/update?id=@item.Id">Update</a>
+                @:</td>
+            @:</tr>
+        }
+    </table>
+    <a href="/school/create">Create new school</a>
 </body>
 </html>

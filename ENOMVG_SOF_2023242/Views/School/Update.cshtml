@@ -1,8 +1,9 @@
 ﻿@using ENOMVG_SOF_2023242.Models;
 @model School
 
-<h1>Iskola hozzáadása</h1>
-<form action="create" method="post" style="display: flex; flex-direction: column">
+<h1>Iskola adatainak frissítése</h1>
+<form action="update" method="post" style="display: flex; flex-direction: column">
+    @Html.HiddenFor(t => t.Id)
     @Html.HiddenFor(t => t.Students)
     @Html.HiddenFor(t => t.Teachers)
 
@@ -21,6 +22,6 @@
     @Html.ValidationMessageFor(s => s.Type)
     <br />
 
-    <input type="submit" value="Hozzáadás" />
+    <input type="submit" value="Frissítés" />
 
 </form>
