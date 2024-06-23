@@ -12,6 +12,8 @@ namespace ENOMVG_SOF_2023242.Models
 
         [Required]
         [StringLength(80)]
+        [Display(Name = "Név")]
+
         public string Name { get; set; }
 
         [Required]
@@ -19,13 +21,17 @@ namespace ENOMVG_SOF_2023242.Models
         public int SchoolId { get; set; }
 
         [JsonIgnore]
+        [Display(Name = "Iskola")]
         public virtual School School { get; set; }
 
         [Required]
         [Range(6,28)]
+        [Display(Name = "Kor")]
         public int Age { get; set; }
 
         [Range(1.00,5.00)]
+        [Display(Name = "Átlag")]
+
         public double GradesAVG { get; set; }
 
         public Student()
