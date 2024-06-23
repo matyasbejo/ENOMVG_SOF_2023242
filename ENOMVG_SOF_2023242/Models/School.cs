@@ -18,12 +18,16 @@ namespace ENOMVG_SOF_2023242.Models
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "Név")]
         [StringLength(100)]
-        public string Name { get; set;}
+        public string Name { get; set; }
 
+        [Range(0, 99999)]
+        [Display(Name = "Kor")]
         public int Age { get; set; }
 
         [Required]
+        [Display(Name = "Típus")]
         public stype Type { get; set; }
 
         public virtual ICollection<Student> Students { get; set; }
