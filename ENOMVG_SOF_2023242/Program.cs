@@ -10,8 +10,8 @@ builder.Services.AddTransient<ISchoolRepository, SchoolRepository>();
 builder.Services.AddTransient<IStudentRepository, StudentRepository>();
 builder.Services.AddTransient<ITeacherRepository, TeacherRepository>();
 builder.Services.AddDbContext<SchollingDbContext>();
-var app = builder.Build();
 
+var app = builder.Build();
 app.UseRouting();
 app.MapControllers();
 app.MapControllerRoute(
