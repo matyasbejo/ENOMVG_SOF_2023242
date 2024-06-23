@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.InMemory;
+﻿using Microsoft.EntityFrameworkCore;
 using ENOMVG_SOF_2023242.Models;
 
 namespace ENOMVG_SOF_2023242.Data
@@ -20,12 +18,8 @@ namespace ENOMVG_SOF_2023242.Data
         {
             if (!builder.IsConfigured)
             {
-                //string conn = @"Data Source=(LocalDB)\MSSQLLocalDB;
-                //AttachDbFilename=|DataDirectory|\SchoolingDbInM.mdf;Integrated Security=True;MultipleActiveResultSets=true";
-
-                builder
-                    .UseInMemoryDatabase("SchoolingDb")
-                    .UseLazyLoadingProxies();
+                string conn = "Server=(localdb)\\mssqllocaldb;Database=SchoolingDb;Trusted_Connection=True;MultipleActiveResultSets=true";
+                builder.UseSqlServer(conn).UseLazyLoadingProxies();
             }
         }
 
