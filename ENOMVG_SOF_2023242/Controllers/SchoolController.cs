@@ -28,7 +28,37 @@ namespace ENOMVG_SOF_2023242.Controllers
         [HttpPost]  
         public IActionResult Create(School school)
         {
+            if(!ModelState.IsValid) return View(school);
             repo.Create(school);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            repo.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
+        
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var school = repo.Read(id);
+            return View(school);
+        }
+        
+        [HttpPost]
+        public IActionResult Update(School school )
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(school);
+            }
+            var DbSchool = repo.Read(school.Id);
+            DbSchool.Age = school.Age;
+            DbSchool.Name = school.Name;
+            DbSchool.Type = school.Type;
+            repo.Update(DbSchool);
             return RedirectToAction(nameof(Index));
         }
     }
