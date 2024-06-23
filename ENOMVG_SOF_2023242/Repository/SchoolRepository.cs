@@ -32,6 +32,14 @@ namespace ENOMVG_SOF_2023242.Repository
         {
             return context.Set<School>();
         }
+
+        public School Read(string name)
+        {
+            if (this.context.Schools.Count(x => x.Name == name) < 2)
+                return this.context.Schools.FirstOrDefault(x => x.Name == name);
+            else return null;
+        }
+
         public School Read(int _id)
         {
             return this.context.Schools.First(x => x.Id == _id);
