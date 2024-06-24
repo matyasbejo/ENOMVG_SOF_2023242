@@ -12,6 +12,7 @@ builder.Services.AddTransient<ITeacherRepository, TeacherRepository>();
 builder.Services.AddDbContext<SchollingDbContext>();
 
 var app = builder.Build();
+app.UseStaticFiles();
 app.UseRouting();
 app.MapControllers();
 app.MapControllerRoute(

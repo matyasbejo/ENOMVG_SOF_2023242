@@ -10,9 +10,9 @@ namespace ENOMVG_SOF_2023242.Logic
 {
     public class TeacherLogic : ITeacherLogic
     {
-        IRepository<Teacher> repository;
+        TeacherRepository repository;
 
-        public TeacherLogic(IRepository<Teacher> _tchrepo)
+        public TeacherLogic(TeacherRepository _tchrepo)
         {
             repository = _tchrepo;
         }

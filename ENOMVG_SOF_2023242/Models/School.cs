@@ -30,6 +30,8 @@ namespace ENOMVG_SOF_2023242.Models
         [Display(Name = "Típus")]
         public stype Type { get; set; }
 
+        public string ImageFileName { get; set; }   
+
         public virtual ICollection<Student> Students { get; set; }
 
         public virtual ICollection<Teacher> Teachers { get; set; }
@@ -48,6 +50,9 @@ namespace ENOMVG_SOF_2023242.Models
         public School(int _id, string _name, stype _type) : this(_name, _type)
         {
             Id = _id;
+            ImageFileName = "";
+            //ImageContentType = "";
+            //ImageData = new byte[0];
         }
 
         /// <summary>

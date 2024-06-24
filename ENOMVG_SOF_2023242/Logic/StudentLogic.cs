@@ -10,9 +10,9 @@ namespace ENOMVG_SOF_2023242.Logic
 {
     public class StudentLogic : IStudentLogic
     {
-        IRepository<Student> repository;
+        StudentRepository repository;
 
-        public StudentLogic(IRepository<Student> _strepo)
+        public StudentLogic(StudentRepository _strepo)
         {
             repository = _strepo;
         }

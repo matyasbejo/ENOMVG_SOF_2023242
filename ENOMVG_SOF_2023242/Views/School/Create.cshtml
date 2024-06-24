@@ -10,7 +10,7 @@
 </head>
 <body>
 <h1>Iskola hozzáadása</h1>
-<form action="create" method="post" style="display: flex; flex-direction: column">
+<form action="create" method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column">
     @Html.HiddenFor(t => t.Students)
     @Html.HiddenFor(t => t.Teachers)
 
@@ -28,6 +28,11 @@
     @Html.DropDownListFor(s => s.Type, new SelectList(Enum.GetValues(typeof(stype))))
     @Html.ValidationMessageFor(s => s.Type)
     <br />
+
+    <label>Fotó</label>
+    <input type="file" name="imagedata" accept=".png,.jpg,.jpeg,.svg,.gif,.bmp" />
+    <input type="hidden" name="imagefilename" value="davidtennant" />
+    <br/>
 
     <input type="submit" value="Hozzáadás" />
 

@@ -2,6 +2,7 @@
 using ENOMVG_SOF_2023242.Models;
 using ENOMVG_SOF_2023242.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Core.Infrastructure;
 
 namespace ENOMVG_SOF_2023242.Controllers
 {
@@ -26,9 +27,20 @@ namespace ENOMVG_SOF_2023242.Controllers
         }
 
         [HttpPost]  
-        public IActionResult Create(School school)
+        public IActionResult Create(School school, IFormFile imagedata)
         {
-            if(!ModelState.IsValid) return View(school);
+            if (imagedata != null)
+            {
+                using (var stream = imagedata.OpenReadStream())
+                {
+                    byte[] buffer = new byte[imagedata.Length];
+                    stream.Read(buffer, 0, (int)imagedata.Length);
+                    string filename = $"{school.Id}_picture.{imagedata.FileName.Split('.')[1]}";
+                    school.ImageFileName = filename;
+                    System.IO.File.WriteAllBytes(Path.Combine("wwwroot", "images", filename), buffer);
+                }
+            }
+            //if (!ModelState.IsValid) return View(school);
             repo.Create(school);
             return RedirectToAction(nameof(Index));
         }
@@ -48,18 +60,42 @@ namespace ENOMVG_SOF_2023242.Controllers
         }
         
         [HttpPost]
-        public IActionResult Update(School school )
+        public IActionResult Update(School school, IFormFile imagedata)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(school);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return View(school);
+            //}
+
             var DbSchool = repo.Read(school.Id);
+            if (imagedata != null)
+            {
+                using (var stream = imagedata.OpenReadStream())
+                {
+                    byte[] buffer = new byte[imagedata.Length];
+                    stream.Read(buffer, 0, (int)imagedata.Length);
+                    string filename = $"{school.Id}_picture.{imagedata.FileName.Split('.')[1]}";
+                    if (!school.ImageFileName.Contains('.')) System.IO.File.Delete(Path.Combine("wwwroot", "images", school.ImageFileName));
+                    school.ImageFileName = filename;
+                    DbSchool.ImageFileName = filename;
+                    System.IO.File.WriteAllBytes(Path.Combine("wwwroot", "images", filename), buffer);
+                }
+            }
+
             DbSchool.Age = school.Age;
             DbSchool.Name = school.Name;
             DbSchool.Type = school.Type;
             repo.Update(DbSchool);
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult GetImage(int id)
+        {
+            return null;
+            //var school = repo.Read(id);
+            //if (school.ImageData.Length > 3)
+            //    return new FileContentResult(school.ImageData, school.ImageContentType);
+            //else return BadRequest();
         }
     }
 }

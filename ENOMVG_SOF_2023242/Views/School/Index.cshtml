@@ -12,16 +12,20 @@
         
     <table>
         <tr>
+            <th>Címer</th>
             <th>Név</th>
             <th>Kor</th>
+            <th>Diákok száma</th>
             <th>Típus</th>
             <th>Műveletek</th>
         </tr>
         @foreach(var item in Model)
         {
             @:<tr>
-                @:<td>@item.Id @item.Name</td>
+                @:<td><img height="100" src="/images/@item.ImageFileName"/></td>
+                @:<td>@item.Name</td>
                 @:<td>@item.Age</td>
+                @:<td>@item.Students.Count</td>
                 @:<td>@item.Type</td>
                 @:<td>
                 @:    <a href="/school/delete?id=@item.Id">Delete</a>

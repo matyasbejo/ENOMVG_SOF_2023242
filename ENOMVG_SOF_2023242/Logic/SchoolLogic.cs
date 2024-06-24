@@ -10,9 +10,9 @@ namespace ENOMVG_SOF_2023242.Logic
 {
     public class SchoolLogic : ISchoolLogic
     {
-        IRepository<School> repository;
+        SchoolRepository repository;
 
-        public SchoolLogic(IRepository<School> _screpo)
+        public SchoolLogic(SchoolRepository _screpo)
         {
             repository = _screpo;
         }
