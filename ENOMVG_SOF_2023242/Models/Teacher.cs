@@ -6,15 +6,26 @@ namespace ENOMVG_SOF_2023242.Models
 {
     public enum subj
     {
+        [Display(Name ="Tanító")]
         ESTeacher, //elementary school teacher (magyar tanító)
+        [Display(Name = "Történelem")]
         History,
+        [Display(Name = "Fizika")]
         Physics,
+        [Display(Name = "Német")]
         German,
+        [Display(Name = "Földrajz")]
         Geoghraphy,
+        [Display(Name = "Testnevelés")]
         PE,
+        [Display(Name = "Informatika")]
         IT,
+        [Display(Name = "Angol")]
         English,
-        Literature
+        [Display(Name = "Magyar")]
+        Literature,
+        [Display(Name = "Matek")]
+        Math
     }
     public class Teacher
     {
@@ -23,7 +34,7 @@ namespace ENOMVG_SOF_2023242.Models
         public int Id { get; set;}
 
         [Required]
-        [StringLength(80)]
+        [StringLength(50)]
         public string Name { get; set;}
 
         [Required]
@@ -31,12 +42,15 @@ namespace ENOMVG_SOF_2023242.Models
         public int SchoolId { get; set;}
 
         [JsonIgnore]
+        [Display(Name = "Iskola")]
         public virtual School School { get; set; }
 
-        [Required]        
+        [Required]
+        [Display(Name = "Tantárgy")]
         public subj MainSubject { get; set;}
         
         [Required]
+        [Display(Name = "Órabér")]
         public int Salary { get; set; }
 
         public Teacher()
