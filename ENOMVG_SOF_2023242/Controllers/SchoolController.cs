@@ -3,6 +3,7 @@ using ENOMVG_SOF_2023242.Models;
 using ENOMVG_SOF_2023242.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Core.Infrastructure;
+using System.ComponentModel;
 
 namespace ENOMVG_SOF_2023242.Controllers
 {
@@ -89,13 +90,6 @@ namespace ENOMVG_SOF_2023242.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult GetImage(int id)
-        {
-            return null;
-            //var school = repo.Read(id);
-            //if (school.ImageData.Length > 3)
-            //    return new FileContentResult(school.ImageData, school.ImageContentType);
-            //else return BadRequest();
-        }
+
     }
 }
