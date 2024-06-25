@@ -1,14 +1,6 @@
 ﻿@using ENOMVG_SOF_2023242.Models;
 @model School
 
-<html>
-<!DOCTYPE <html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-    <meta charset="utf-8" />
-    <title>Iskola hozzáadás</title>
-</head>
-<body>
 <h1>Iskola hozzáadása</h1>
 <form action="create" method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column">
     @Html.HiddenFor(t => t.Students)
@@ -35,7 +27,4 @@
     <br/>
 
     <input type="submit" value="Hozzáadás" />
-
 </form>
-</body>
-</html>

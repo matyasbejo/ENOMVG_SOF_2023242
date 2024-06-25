@@ -1,18 +1,9 @@
 ﻿@using ENOMVG_SOF_2023242.Models;
 @model Teacher
 
-<html>
-<!DOCTYPE
-<html xmlns="http://www.w3.org/1999/xhtml">
+<h1>Tanár adatainak frissítése</h1>
 
-<head>
-    <meta charset="utf-8" />
-    <title>Tanár frissítés</title>
-</head>
-<body>
-    <h1>Tanár adatainak frissítése</h1>
-
-    <form action="update" method="post" style="display: flex; flex-direction: column">
+<form action="update" method="post" style="display: flex; flex-direction: column">
     @Html.HiddenFor(s => s.Id)
     @Html.HiddenFor(s => s.School)
 
@@ -37,6 +28,4 @@
     <br />
 
     <input type="submit" value="Frissítés" />
-    </form>
-</body>
-</html>
+</form>
