@@ -1,0 +1,37 @@
+﻿@using ENOMVG_SOF_2023242.Models
+@model IEnumerable<Teacher>
+
+<!DOCTYPE <html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>Diákok rendszer</h1>
+        
+    <table>
+        <tr>
+            <th>Név</th>
+            <th>Tantárgy</th>
+            <th>Órabér</th>
+            <th>Iskola</th>
+            <th>Műveletek</th>
+        </tr>
+        @foreach(var item in Model)
+        {
+            @:<tr>
+                @:<td>@item.Name</td>
+                @:<td>@item.MainSubject</td>
+                @:<td>@item.Salary</td>
+                @:<td>@item.School.Name</td>
+                @:<td>
+                @:    <a href="/teacher/delete?id=@item.Id">Delete</a>
+                @:    <a href="/teacher/update?id=@item.Id">Update</a>
+                @:</td>
+            @:</tr>
+        }
+    </table>
+    <a href="/teacher/create">Tanár hozzáadása</a>
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿@using ENOMVG_SOF_2023242.Models;
+@model Teacher
+
+<html>
+<!DOCTYPE
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Tanár frissítés</title>
+</head>
+<body>
+    <h1>Tanár adatainak frissítése</h1>
+
+    <form action="update" method="post" style="display: flex; flex-direction: column">
+    @Html.HiddenFor(s => s.Id)
+    @Html.HiddenFor(s => s.School)
+
+    @Html.LabelFor(s => s.Name)
+    @Html.EditorFor(s => s.Name)
+    @Html.ValidationMessageFor(s => s.Name)
+    <br />
+
+    @Html.LabelFor(s => s.MainSubject)
+    @Html.DropDownListFor(s => s.MainSubject, Html.GetEnumSelectList(typeof(subj)))
+    @Html.ValidationMessageFor(s => s.MainSubject)
+    <br />
+
+    @Html.LabelFor(s => s.Salary)
+    @Html.EditorFor(s => s.Salary)
+    @Html.ValidationMessageFor(s => s.Salary)
+    <br />
+
+    @Html.LabelFor(s => s.SchoolId)
+    @Html.EditorFor(s => s.SchoolId)
+    @Html.ValidationMessageFor(s => s.SchoolId)
+    <br />
+
+    <input type="submit" value="Frissítés" />
+    </form>
+</body>
+</html>
