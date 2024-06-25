@@ -16,6 +16,7 @@
             <th>Név</th>
             <th>Kor</th>
             <th>Diákok száma</th>
+            <th>Tanárok száma</th>
             <th>Típus</th>
             <th>Műveletek</th>
         </tr>
@@ -26,6 +27,7 @@
                 @:<td>@item.Name</td>
                 @:<td>@item.Age</td>
                 @:<td>@item.Students.Count</td>
+                @:<td>@item.Teachers.Count</td>
                 @:<td>@item.Type</td>
                 @:<td>
                 @:    <a href="/school/delete?id=@item.Id">Delete</a>
@@ -34,6 +36,6 @@
             @:</tr>
         }
     </table>
-    <a href="/school/create">Create new school</a>
+    <a href="/school/create">Iskola hozzáadása</a>
 </body>
 </html>
