@@ -2,6 +2,8 @@
 using ENOMVG_SOF_2023242.Models;
 using ENOMVG_SOF_2023242.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Text.Json;
 
 namespace ENOMVG_SOF_2023242.Controllers
 {
@@ -30,7 +32,6 @@ namespace ENOMVG_SOF_2023242.Controllers
         [HttpPost]  
         public IActionResult Create(Student student)
         {
-            if(!ModelState.IsValid) return View(student);
             repo.Create(student);
             return RedirectToAction(nameof(Index));
         }
@@ -46,11 +47,13 @@ namespace ENOMVG_SOF_2023242.Controllers
         public IActionResult Update(int id)
         {
             var student = repo.Read(id);
+            var schools = schoolRepo.ReadAll();
+            ViewBag.Schools = new SelectList(schools, "Id", "Name");
             return View(student);
         }
-        
+
         [HttpPost]
-        public IActionResult Update(Student student )
+        public IActionResult Update(Student student)
         {
             var DbStudent = repo.Read(student.Id);
             DbStudent.Age = student.Age;
