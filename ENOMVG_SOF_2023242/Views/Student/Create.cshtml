@@ -12,6 +12,8 @@
 <body>
 <h1>Diák hozzáadása</h1>
 <form action="create" method="post" style="display: flex; flex-direction: column">
+    @Html.HiddenFor(s => s.School)
+
     @Html.LabelFor(s => s.Name)
     @Html.EditorFor(s => s.Name)
     @Html.ValidationMessageFor(s => s.Name)
@@ -26,9 +28,9 @@
     @Html.EditorFor(s => s.GradesAVG)
     @Html.ValidationMessageFor(s => s.GradesAVG)
 
-    @* @Html.LabelFor(t => t.School)
-    @Html.DropDownListFor(s => s.School, new SelectList(Enum.GetValues()))
-    @Html.ValidationMessageFor(s => s.School) *@
+    @Html.LabelFor(t => t.SchoolId)
+    @Html.EditorFor(t => t.SchoolId)
+    @Html.ValidationMessageFor(s => s.SchoolId)
     <br />
 
     <input type="submit" value="Hozzáadás" />
