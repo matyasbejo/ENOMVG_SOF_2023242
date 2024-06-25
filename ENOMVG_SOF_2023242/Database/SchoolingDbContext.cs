@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ENOMVG_SOF_2023242.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace ENOMVG_SOF_2023242.Data
 {
@@ -18,8 +19,9 @@ namespace ENOMVG_SOF_2023242.Data
         {
             if (!builder.IsConfigured)
             {
-                string conn = "Server=(localdb)\\mssqllocaldb;Database=SchoolingDb;Trusted_Connection=True;MultipleActiveResultSets=true";
+                string conn = "Server=(localdb)\\mssqllocaldb;Database=SchoolingDB;Trusted_Connection=True;MultipleActiveResultSets=true";
                 builder.UseSqlServer(conn).UseLazyLoadingProxies();
+                //builder.UseInMemoryDatabase("s").UseLazyLoadingProxies();
             }
         }
 

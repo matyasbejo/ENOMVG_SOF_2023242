@@ -1,8 +1,10 @@
 ﻿using ENOMVG_SOF_2023242.Logic;
 using ENOMVG_SOF_2023242.Models;
 using ENOMVG_SOF_2023242.Repository;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Core.Infrastructure;
+using Newtonsoft.Json;
 using System.ComponentModel;
 
 namespace ENOMVG_SOF_2023242.Controllers
@@ -10,10 +12,12 @@ namespace ENOMVG_SOF_2023242.Controllers
     public class SchoolController : Controller
     {
         ISchoolRepository repo;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public SchoolController(ISchoolRepository repo)
+        public SchoolController(ISchoolRepository repo, UserManager<IdentityUser> umanager)
         {
             this.repo = repo;
+            _userManager = umanager;
         }
 
         public IActionResult Index()
