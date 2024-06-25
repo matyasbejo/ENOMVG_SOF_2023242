@@ -17,7 +17,7 @@
         @foreach(var item in Model)
         {
             @:<tr>
-                @:<td>@item.Id @item.Name</td>
+                @:<td>@item.Name</td>
                 @:<td>@item.Age</td>
                 @:<td>@item.GradesAVG</td>
                 @:<td>@item.School.Name</td>
@@ -28,4 +28,4 @@
             @:</tr>
         }
     </table>
-<a href="/student/create">Diák hozzáadása</a>
+<h3><a href="/student/create">Diák hozzáadása</a></h3>

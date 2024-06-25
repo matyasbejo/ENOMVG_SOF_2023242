@@ -1,14 +1,19 @@
 ﻿<!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="~/style.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans" />
+        <script src="https://kit.fontawesome.com/972c158c20.js" crossorigin="anonymous"></script>
         @RenderSection("head", false)
     </head>
     <body>
         <nav>
-            <a href="/School/Index">Iskolák</a>
-            <a href="/Student/Index">Diákok</a>
-            <a href="/Teacher/Index">Tanárok</a>
+        <a href="/School/Index"><i class="fa-solid fa-school"></i>Iskolák</a>
+        <a href="/Student/Index"><i class="fa-solid fa-graduation-cap"></i>Diákok</a>
+        <a href="/Teacher/Index"><i class="fa-solid fa-chalkboard-user"></i>Tanárok</a>
         </nav>
-        @RenderBody()
+        <section>
+            @RenderBody()
+        </section>
     </body>
 </html>
