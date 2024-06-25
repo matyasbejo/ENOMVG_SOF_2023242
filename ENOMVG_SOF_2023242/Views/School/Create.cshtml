@@ -1,6 +1,10 @@
 ﻿@using ENOMVG_SOF_2023242.Models;
 @model School
 
+@section head{
+    <title>Iskola hozzáadás</title>
+}
+
 <h1>Iskola hozzáadása</h1>
 <form action="create" method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column">
     @Html.HiddenFor(t => t.Students)

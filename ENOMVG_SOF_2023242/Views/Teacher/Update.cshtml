@@ -1,8 +1,11 @@
 ﻿@using ENOMVG_SOF_2023242.Models;
 @model Teacher
 
-<h1>Tanár adatainak frissítése</h1>
+@section head {
+    <title>Tanár frissítés</title>
+}
 
+<h1>Tanár adatainak frissítése</h1>
 <form action="update" method="post" style="display: flex; flex-direction: column">
     @Html.HiddenFor(s => s.Id)
     @Html.HiddenFor(s => s.School)
